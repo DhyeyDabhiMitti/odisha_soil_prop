@@ -9,7 +9,7 @@ def load_data():
     coords = [{'x':row['x'],'y':row['y']} for index,row in df1.iterrows()]
     return coords,df1
 
-st.title("Map with Marked Coordinates")
+st.title("Soil Properties with Marked Coordinates for Orissa")
 
 @st.cache_resource
 def main():
