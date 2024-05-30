@@ -36,7 +36,7 @@ def main():
         popup = folium.Popup(html, max_width=500)
         folium.Marker(
             location=(coord["x"], coord["y"]),
-            tooltip = df1[df1['x']==coord['x']][df1['y']==coord['y']]['page'].mean(),
+            tooltip = str(coord['x']) + ' , ' + str(coord['y']),
             popup = popup
         ).add_to(m)
 
