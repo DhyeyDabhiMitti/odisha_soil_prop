@@ -5,10 +5,9 @@ import pandas as pd
 
 @st.cache_resource
 def load_data():
-    df1 = pd.read_csv('Tables/Table1.csv',index_col=0)
-    df2 = pd.read_csv('Tables/Table2.csv')
+    df1 = pd.read_csv('Table1.csv',index_col=0)
     coords = [{'x':row['x'],'y':row['y']} for index,row in df1.iterrows()]
-    return coords,df1,df2
+    return coords,df1
 
 st.title("Map with Marked Coordinates")
 
@@ -16,7 +15,7 @@ st.title("Map with Marked Coordinates")
 def main():
 
     # Define coordinates
-    coordinates,df1,df2 = load_data()
+    coordinates,df1 = load_data()
 
     # Create a Folium map centered around the first location
     cent_X = 0
