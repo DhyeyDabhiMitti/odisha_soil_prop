@@ -5,7 +5,7 @@ import pandas as pd
 
 @st.cache_resource
 def load_data():
-    df1 = pd.read_csv('Table1.csv',index_col=0)
+    df1 = pd.read_csv('edited_Table1.csv',index_col=0)
     coords = [{'x':row['x'],'y':row['y']} for index,row in df1.iterrows()]
     return coords,df1
 
