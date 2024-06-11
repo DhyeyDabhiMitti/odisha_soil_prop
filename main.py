@@ -36,7 +36,7 @@ def main():
     # Add markers to the map
     for coord in coordinates:
         temp_df = pd.DataFrame(df1[df1['x']==coord['x']][df1['y']==coord['y']])
-        html = temp_df.iloc[:,0:9]).to_html(
+        html = temp_df.iloc[:,0:9].to_html(
                 classes="table table-striped table-hover table-condensed table-responsive"
             )
         popup = folium.Popup(html, max_width=500)
