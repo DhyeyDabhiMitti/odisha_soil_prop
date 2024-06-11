@@ -53,6 +53,5 @@ load_data()
 if 'map' not in st.session_state:
     map = main()
     st.session_state['map'] = map
-st_data = st_folium(st.session_state['map'], width=800, height=500)
-if st_data['last_clicked'] is not None:
-    st.write(st_data['last_clicked'])
+folium_static(st.session_state['map'], width=800, height=500)
+
