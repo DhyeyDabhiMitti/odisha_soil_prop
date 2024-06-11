@@ -35,7 +35,8 @@ def main():
 
     # Add markers to the map
     for coord in coordinates:
-        html = pd.DataFrame(df1[df1['x']==coord['x']][df1['y']==coord['y']].iloc[:,0:9]).to_html(
+        temp_df = pd.DataFrame(df1[df1['x']==coord['x']][df1['y']==coord['y']]
+        html = temp_df.iloc[:,0:9]).to_html(
                 classes="table table-striped table-hover table-condensed table-responsive"
             )
         popup = folium.Popup(html, max_width=500)
@@ -52,4 +53,4 @@ load_data()
 if 'map' not in st.session_state:
     map = main()
     st.session_state['map'] = map
-folium_static(st.session_state['map'], width=800, height=500)
+st_folium(st.session_state['map'], width=800, height=500)
