@@ -33,7 +33,7 @@ def main():
     indian_district_polygon = (
         "https://github.com/geohacker/india/blob/c3df722d136666b6b663f9359336ae1543809a48/district/india_district.geojson"
     )
-    gdf = geopandas.read_file(indian_district_polygon)
+    gdf = gpd.read_file(indian_district_polygon)
     folium.GeoJson(gdf).add_to(m)
 
     # Add markers to the map
