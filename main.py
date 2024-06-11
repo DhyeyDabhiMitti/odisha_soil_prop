@@ -28,6 +28,12 @@ def main():
     map_center = (cent_X, cent_Y)
     m = folium.Map(location=map_center, zoom_start=5)
 
+    # Add district layer
+    indian_district_polygon = (
+        "https://github.com/geohacker/india/blob/master/district/india_district.geojson"
+    )
+    folium.GeoJson(indian_district_polygon).add_to(m)
+
     # Add markers to the map
     for coord in coordinates:
         html = pd.DataFrame(df1[df1['x']==coord['x']][df1['y']==coord['y']].iloc[:,0:9]).to_html(
