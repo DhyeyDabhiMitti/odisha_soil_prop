@@ -2,6 +2,7 @@ import streamlit as st
 import folium
 from streamlit_folium import st_folium,folium_static
 import pandas as pd
+import geopandas as gpd
 
 @st.cache_resource
 def load_data():
@@ -32,7 +33,8 @@ def main():
     indian_district_polygon = (
         "https://github.com/geohacker/india/blob/c3df722d136666b6b663f9359336ae1543809a48/district/india_district.geojson"
     )
-    folium.GeoJson(indian_district_polygon).add_to(m)
+    gdf = geopandas.read_file(indian_district_polygon)
+    folium.GeoJson(gdf).add_to(m)
 
     # Add markers to the map
     for coord in coordinates:
