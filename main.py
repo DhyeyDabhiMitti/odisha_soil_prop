@@ -30,7 +30,7 @@ def main():
 
     # Add district layer
     indian_district_polygon = (
-        "https://github.com/geohacker/india/blob/master/district/india_district.geojson"
+        "https://github.com/geohacker/india/blob/c3df722d136666b6b663f9359336ae1543809a48/district/india_district.geojson"
     )
     folium.GeoJson(indian_district_polygon).add_to(m)
 
