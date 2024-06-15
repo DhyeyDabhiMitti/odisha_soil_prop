@@ -30,8 +30,8 @@ def main():
     m = folium.Map(location=map_center, zoom_start=5)
 
     # Add district layer
-    gdf = gpd.read_file('odisha.geojson')
-    folium.GeoJson(gdf).add_to(m)
+    #gdf = gpd.read_file('odisha.geojson')
+    #folium.GeoJson(gdf).add_to(m)
 
     # Add markers to the map
     for coord in coordinates:
