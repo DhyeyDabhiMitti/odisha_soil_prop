@@ -17,6 +17,7 @@ def main():
 
     # Define coordinates
     coordinates,df1 = load_data()
+    print(len(coordinates),load_data.shape)
 
     # Create a Folium map centered around the first location
     cent_X = 0
