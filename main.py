@@ -53,5 +53,6 @@ load_data()
 if 'map' not in st.session_state:
     map = main()
     st.session_state['map'] = map
-folium_static(st.session_state['map'], width=800, height=500)
+print(type(m))
+st_folium(st.session_state['map'], width=800, height=500)
 
