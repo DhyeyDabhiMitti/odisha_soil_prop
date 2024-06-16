@@ -28,14 +28,9 @@ def main():
     cent_X = cent_X/len(coordinates)
     cent_Y = cent_Y/len(coordinates)
     map_center = (cent_X, cent_Y)
+
+    #Create the folium map
     m = folium.Map(location=map_center, zoom_start=5)
-
-    # Add district layer
-    '''gdf = gpd.read_file('odisha.geojson')
-    for index,row in gdf.iterrows():
-        temp_poly = row['geometry']
-        folium.GeoJson(temp_poly).add_to(m)'''
-
 
     # Add markers to the map
     for coord in coordinates:
@@ -57,6 +52,18 @@ load_data()
 if 'map' not in st.session_state:
     map = main()
     st.session_state['map'] = map
-data = st_folium(st.session_state['map'], width=800, height=500)
+
+# Add district layer
+if 'feature_group' not in st.session_state:
+    gdf = gpd.read_file('odisha.geojson')
+    fg = folium.FeatureGroup(name="Districts")
+    for index,row in gdf.iterrows():
+        temp_poly = row['geometry']
+        fg.add_child(folium.GeoJson(temp_poly))
+    st.session_state['feature_group'] = fg
+
+control = folium.LayerControl()
+
+data = st_folium(st.session_state['map'], width=800, height=500,feature_group_to_add=fg,layer_control=control)
 st.write(data)
 
