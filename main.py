@@ -62,8 +62,8 @@ if 'feature_group' not in st.session_state:
         fg.add_child(folium.GeoJson(temp_poly))
     st.session_state['feature_group'] = fg
 
-control = folium.LayerControl()
+folium.LayerControl().add_to(st.session_state['map'])
 
-data = st_folium(st.session_state['map'], width=800, height=500,feature_group_to_add=st.session_state['feature_group'],layer_control=control)
+data = st_folium(st.session_state['map'], width=800, height=500,feature_group_to_add=st.session_state['feature_group'])
 st.write(data)
 
