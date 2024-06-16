@@ -62,14 +62,6 @@ load_data()
 if 'map' not in st.session_state:
     map = main()
     st.session_state['map'] = map
-
-
-if 'feature_group' not in st.session_state:
-    
-    st.session_state['feature_group'] = fg
-
-layer_control = folium.LayerControl()
-
-data = st_folium(st.session_state['map'], layer_control=layer_control,width=800, height=500,feature_group_to_add=st.session_state['feature_group'])
+data = st_folium(st.session_state['map'],width=800, height=500)
 st.write(data)
 
