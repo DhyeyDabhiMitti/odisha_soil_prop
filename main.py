@@ -43,7 +43,7 @@ def main():
     folium.LayerControl().add_to(m)
 
     # Add markers to the map
-    for coord in coordinates:
+    '''for coord in coordinates:
         temp_df = pd.DataFrame(df1[df1['x']==coord['x']][df1['y']==coord['y']])
         html = temp_df.iloc[:,0:9].to_html(
                 classes="table table-striped table-hover table-condensed table-responsive"
@@ -53,9 +53,8 @@ def main():
             location=(coord["x"], coord["y"]),
             tooltip = str(coord['x']) + ' , ' + str(coord['y']),
             popup = popup
-        ).add_to(m)
+        ).add_to(m)'''
 
-    # Display the map in Streamlit
     return m
 
 load_data()
