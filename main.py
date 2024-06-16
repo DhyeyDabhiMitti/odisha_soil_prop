@@ -40,7 +40,7 @@ def main():
         fg.add_child(folium.GeoJson(temp_poly))
     fg.add_to(m)
 
-    folium.LayerControl.add_to(m)
+    folium.LayerControl().add_to(m)
 
     # Add markers to the map
     for coord in coordinates:
