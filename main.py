@@ -58,7 +58,6 @@ def main():
 
     return m
 
-load_data()
 if 'map' not in st.session_state:
     map = main()
     st.session_state['map'] = map
