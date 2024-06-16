@@ -64,6 +64,6 @@ if 'feature_group' not in st.session_state:
 
 control = folium.LayerControl()
 
-data = st_folium(st.session_state['map'], width=800, height=500,feature_group_to_add=fg,layer_control=control)
+data = st_folium(st.session_state['map'], width=800, height=500,feature_group_to_add=st.session_state['feature_group'],layer_control=control)
 st.write(data)
 
