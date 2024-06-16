@@ -34,10 +34,11 @@ def main():
 
     # Add district layer
     gdf = gpd.read_file('odisha.geojson')
-    fg = folium.FeatureGroup(name="Districts")
+    gdf = gdf[:10,:]
+    fg = folium.FeatureGroup(name="Districts",show=False)
     for index,row in gdf.iterrows():
         temp_poly = row['geometry']
-        fg.add_child(folium.GeoJson(temp_poly))
+        folium.GeoJson(temp_poly).add_to(fg)
     fg.add_to(m)
 
     folium.LayerControl().add_to(m)
