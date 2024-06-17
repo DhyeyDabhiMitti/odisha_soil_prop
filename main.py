@@ -32,11 +32,7 @@ def main():
     m = folium.Map(location=map_center, zoom_start=5)
 
     # Add district layer
-    gdf = gpd.read_file('odisha.geojson')
-    #fg = folium.FeatureGroup(name="Districts",show=False)
-    for index,row in gdf.iterrows():
-        temp_poly = row['geometry']
-        folium.GeoJson(temp_poly).add_to(m)
+    
     #fg.add_to(m)
 
     #folium.LayerControl().add_to(m)
@@ -65,6 +61,10 @@ if __name__ == '__main__':
         st.write("main executed")
         st.session_state['map'] = map
     st.write('if completed')
+    gdf = gpd.read_file('odisha.geojson')
+    for index,row in gdf.iterrows():
+        temp_poly = row['geometry']
+        folium.GeoJson(temp_poly).add_to(m)
     data = st_folium(st.session_state['map'],width=800, height=500)
     st.write("map displayed")
     st.write(data)
