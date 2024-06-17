@@ -61,9 +61,13 @@ if __name__ == '__main__':
         st.write("main executed")
         st.session_state['map'] = map
         gdf = gpd.read_file('odisha.geojson')
+        fg = folium.FeatureGroup(name="Districts",show=False)
         for index,row in gdf.iterrows():
             temp_poly = row['geometry']
-            folium.GeoJson(temp_poly).add_to(st.session_state['map'])
+            fg.add_child(folium.GeoJson(temp_poly))
+        st.session_state['map'].add_child(fg)
+        st.session_state['map'].add_child(folium.LayerControl())
+        st.session_state['map'].save('map.html')
     st.write('if completed')
     data = st_folium(st.session_state['map'],width=800, height=500)
     st.write("map displayed")
