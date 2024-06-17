@@ -58,9 +58,14 @@ def main():
 
 if __name__ == '__main__':   
     st.title("Soil Properties with Marked Coordinates for Orissa")
+    st.write("starts")
     if 'map' not in st.session_state:
+        st.write("in if")
         map = main()
+        st.write("main executed")
         st.session_state['map'] = map
+    st.write('if completed')
     data = st_folium(st.session_state['map'],width=800, height=500)
+    st.write("map displayed")
     st.write(data)
 
