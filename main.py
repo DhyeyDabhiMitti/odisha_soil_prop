@@ -10,7 +10,6 @@ def load_data():
     coords = [{'x':row['x'],'y':row['y']} for index,row in df1.iterrows()]
     return coords,df1
 
-st.title("Soil Properties with Marked Coordinates for Orissa")
 
 @st.cache_resource
 def main():
@@ -57,9 +56,11 @@ def main():
 
     return m
 
-if 'map' not in st.session_state:
-    map = main()
-    st.session_state['map'] = map
-data = st_folium(st.session_state['map'],width=800, height=500)
-st.write(data)
+if __name__ == '__main__':   
+    st.title("Soil Properties with Marked Coordinates for Orissa")
+    if 'map' not in st.session_state:
+        map = main()
+        st.session_state['map'] = map
+    data = st_folium(st.session_state['map'],width=800, height=500)
+    st.write(data)
 
