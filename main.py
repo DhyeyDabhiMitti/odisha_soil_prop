@@ -60,11 +60,11 @@ if __name__ == '__main__':
         map = main()
         st.write("main executed")
         st.session_state['map'] = map
+        gdf = gpd.read_file('odisha.geojson')
+        for index,row in gdf.iterrows():
+            temp_poly = row['geometry']
+            folium.GeoJson(temp_poly).add_to(st.session_state['map'])
     st.write('if completed')
-    gdf = gpd.read_file('odisha.geojson')
-    for index,row in gdf.iterrows():
-        temp_poly = row['geometry']
-        folium.GeoJson(temp_poly).add_to(m)
     data = st_folium(st.session_state['map'],width=800, height=500)
     st.write("map displayed")
     st.write(data)
