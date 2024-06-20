@@ -69,7 +69,7 @@ if 'map' not in st.session_state:
     st.session_state['fg'] = fg
 st.write('if completed')
 control = folium.LayerControl()
-data = st_folium(st.session_state['map'],width=800, height=500,feature_group_to_add=st.session_state['fg'],layer_control=control)
+data = st_folium(st.session_state['map'],width=800, height=500)
 st.write("map displayed")
 st.write(data)
 
