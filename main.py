@@ -67,11 +67,9 @@ if __name__ == '__main__':
         for index,row in gdf.iterrows():
             temp_poly = row['geometry']
             fg.add_child(folium.GeoJson(temp_poly))
-        st.session_state['map'].add_child(fg)
-        st.session_state['map'].add_child(folium.LayerControl())
-        st.session_state['map'].save('map.html')
+        st.session_state['fg'] = fg
     st.write('if completed')
-    data = st_folium(st.session_state['map'],width=800, height=500)
+    data = st_folium(st.session_state['map'],width=800, height=500,feature_group_to_add=st.session_state['fg'],control=folium.LayerContol(),debug=True)
     st.write("map displayed")
     st.write(data)
 
