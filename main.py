@@ -38,6 +38,7 @@ def main():
     #folium.LayerControl().add_to(m)
 
     # Add markers to the map
+    '''
     for coord in coordinates:
         temp_df = pd.DataFrame(df1[df1['x']==coord['x']][df1['y']==coord['y']])
         html = temp_df.iloc[:,0:9].to_html(
@@ -49,7 +50,7 @@ def main():
             tooltip = str(coord['x']) + ' , ' + str(coord['y']),
             popup = popup
         ).add_to(m)
-
+    '''
     return m
 
 if __name__ == '__main__':   
@@ -61,6 +62,7 @@ if __name__ == '__main__':
         st.write("main executed")
         st.session_state['map'] = map
         gdf = gpd.read_file('odisha.geojson')
+        gdf = gdf.iloc[:10,:]
         fg = folium.FeatureGroup(name="Districts",show=False)
         for index,row in gdf.iterrows():
             temp_poly = row['geometry']
