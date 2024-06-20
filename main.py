@@ -67,9 +67,7 @@ if 'map' not in st.session_state:
         temp_poly = row['geometry']
         fg.add_child(folium.GeoJson(temp_poly))
     st.session_state['fg'] = fg
-st.write('if completed')
 control = folium.LayerControl()
 data = st_folium(st.session_state['map'],width=800, height=500)
-st.write("map displayed")
 st.write(data)
 
