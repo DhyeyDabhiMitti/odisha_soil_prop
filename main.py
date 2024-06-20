@@ -69,7 +69,7 @@ if __name__ == '__main__':
             fg.add_child(folium.GeoJson(temp_poly))
         st.session_state['fg'] = fg
     st.write('if completed')
-    data = st_folium(st.session_state['map'],width=800, height=500,feature_group_to_add=st.session_state['fg'],control=folium.LayerContol(),debug=True)
+    data = st_folium(st.session_state['map'],width=800, height=500,feature_group_to_add=st.session_state['fg'],control=folium.LayerControl(),debug=True)
     st.write("map displayed")
     st.write(data)
 
