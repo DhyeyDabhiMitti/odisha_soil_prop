@@ -10,13 +10,19 @@ st.title("Soil Properties with Marked Coordinates for Orissa")
 def load_data():
     df1 = pd.read_csv('edited_Table1.csv',index_col=0)
     coords = [{'x':row['x'],'y':row['y']} for index,row in df1.iterrows()]
-    return coords,df1
+    gdf = gpd.read_file('odisha.geojson')
+    gdf = gdf.iloc[:10,:]
+    fg = folium.FeatureGroup(name="Districts",show=False)
+    for index,row in gdf.iterrows():
+        temp_poly = row['geometry']
+        fg.add_child(folium.GeoJson(temp_poly))
+    return coords,df1,fg
 
 @st.cache_resource
 def main():
 
     # Define coordinates
-    coordinates,df1 = load_data()
+    coordinates,df1,fg = load_data()
     print(len(coordinates),df1.shape)
 
     # Create a Folium map centered around the first location
@@ -31,6 +37,7 @@ def main():
 
     #Create the folium map
     m = folium.Map(location=map_center, zoom_start=5)
+    m.add_child(fg)
 
     # Add district layer
     
@@ -60,12 +67,6 @@ if 'map' not in st.session_state:
     map = main()
     st.write("main executed")
     st.session_state['map'] = map
-    gdf = gpd.read_file('odisha.geojson')
-    gdf = gdf.iloc[:10,:]
-    fg = folium.FeatureGroup(name="Districts",show=False)
-    for index,row in gdf.iterrows():
-        temp_poly = row['geometry']
-        fg.add_child(folium.GeoJson(temp_poly))
     st.session_state['map'].add_child(fg)
 folium_static(st.session_state['map'],width=800, height=500)
 
