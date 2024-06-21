@@ -67,6 +67,6 @@ if 'map' not in st.session_state:
         temp_poly = row['geometry']
         fg.add_child(folium.GeoJson(temp_poly))
     st.session_state['fg'] = fg
-data = st_folium(st.session_state['map'],width=800, height=500,feature_group_to_add=fg)
+data = st_folium(st.session_state['map'],width=800, height=500,feature_group_to_add=st.session_state['fg'])
 st.write(data)
 
