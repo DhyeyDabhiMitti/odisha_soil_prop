@@ -10,13 +10,7 @@ st.title("Soil Properties with Marked Coordinates for Orissa")
 def load_data():
     df1 = pd.read_csv('edited_Table1.csv',index_col=0)
     coords = [{'x':row['x'],'y':row['y']} for index,row in df1.iterrows()]
-    gdf = gpd.read_file('odisha.geojson')
-    gdf = gdf.iloc[:10,:]
-    fg = folium.FeatureGroup(name="Districts",show=False)
-    for index,row in gdf.iterrows():
-        temp_poly = row['geometry']
-        fg.add_child(folium.GeoJson(temp_poly))
-    return coords,df1,fg
+    return coords,df1
 
 @st.cache_resource
 def main():
@@ -37,11 +31,15 @@ def main():
 
     #Create the folium map
     m = folium.Map(location=map_center, zoom_start=5)
-    m.add_child(fg)
 
     # Add district layer
-    
-    #fg.add_to(m)
+    gdf = gpd.read_file('odisha.geojson')
+    gdf = gdf.iloc[:10,:]
+    fg = folium.FeatureGroup(name="Districts",show=False)
+    for index,row in gdf.iterrows():
+        temp_poly = row['geometry']
+        fg.add_child(folium.GeoJson(temp_poly))
+    fg.add_to(m)
 
     #folium.LayerControl().add_to(m)
 
