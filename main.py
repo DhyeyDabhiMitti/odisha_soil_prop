@@ -67,7 +67,6 @@ if 'map' not in st.session_state:
     map = main()
     st.write("main executed")
     st.session_state['map'] = map
-    st.session_state['map'].add_child(fg)
 folium_static(st.session_state['map'],width=800, height=500)
 
 
