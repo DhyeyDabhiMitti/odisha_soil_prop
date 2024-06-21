@@ -67,6 +67,7 @@ if 'map' not in st.session_state:
     st.write("in if")
     map = main()
     st.session_state['map'] = map
+st.write(st.session_state)
 folium_static(st.session_state['map'],width=800, height=500)
 
 
