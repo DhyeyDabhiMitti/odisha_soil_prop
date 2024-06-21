@@ -62,10 +62,10 @@ def main():
     return m
   
 st.write("starts")
+st.write(st.session_state)
 if 'map' not in st.session_state:
     st.write("in if")
     map = main()
-    st.write("main executed")
     st.session_state['map'] = map
 folium_static(st.session_state['map'],width=800, height=500)
 
