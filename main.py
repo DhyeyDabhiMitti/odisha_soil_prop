@@ -60,7 +60,7 @@ if 'map' not in st.session_state:
     map = main()
     st.write("main executed")
     st.session_state['map'] = map
-    #gdf = gpd.read_file('odisha.geojson')
+    gdf = gpd.read_file('odisha.geojson')
     #gdf = gdf.iloc[:10,:]
     #g = folium.FeatureGroup(name="Districts",show=False)
     #for index,row in gdf.iterrows():
