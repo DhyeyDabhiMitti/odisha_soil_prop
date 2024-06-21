@@ -61,12 +61,12 @@ if 'map' not in st.session_state:
     st.write("main executed")
     st.session_state['map'] = map
     gdf = gpd.read_file('odisha.geojson')
-    #gdf = gdf.iloc[:10,:]
-    #g = folium.FeatureGroup(name="Districts",show=False)
-    #for index,row in gdf.iterrows():
-    #    temp_poly = row['geometry']
-    #    fg.add_child(folium.GeoJson(temp_poly))
-    #st.session_state['fg'] = fg
-data = st_folium(st.session_state['map'],width=800, height=500)
+    gdf = gdf.iloc[:10,:]
+    fg = folium.FeatureGroup(name="Districts",show=False)
+    for index,row in gdf.iterrows():
+        temp_poly = row['geometry']
+        fg.add_child(folium.GeoJson(temp_poly))
+    st.session_state['fg'] = fg
+data = st_folium(st.session_state['map'],width=800, height=500,feature_group_to_add=fg)
 st.write(data)
 
