@@ -59,7 +59,7 @@ def main():
 
 if 'map' not in st.session_state:
     st.session_state['map'],st.session_state['df'] = main()
-folium_static(st.session_state['map'],width=800, height=500)
+st_folium(st.session_state['map'],width=800, height=500)
 
 col1,col2 = st.columns(2)
 
