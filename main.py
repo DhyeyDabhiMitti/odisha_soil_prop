@@ -4,7 +4,6 @@ from streamlit_folium import folium_static
 import pandas as pd
 import geopandas as gpd
 import numpy as np
-from pretty_html_table import build_table
 
 st.title("Soil Properties with Marked Coordinates for Orissa")
 
